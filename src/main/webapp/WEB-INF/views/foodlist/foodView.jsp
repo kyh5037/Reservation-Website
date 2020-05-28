@@ -17,6 +17,13 @@
             	var form = $("#letterForm");
             	form.submit();
          	}
+
+			function foodDetail(sto_no) {
+				var form = $("#detailForm");
+				$("#sto_no").val(sto_no);
+
+				form.submit();
+			}
       	</script>
 	</head>
 	<body>
@@ -58,60 +65,45 @@
 		<!-- One -->
 		<div id = "map"></div>
 		<script>
-
-			
-			
-			var container = document.getElementById('map');
-			
-			var gps_x = 37.322843;
-			var gps_y = 127.127846;
-			
-			$("#gps_x").val(gps_x);
-			$("#gps_y").val(gps_y);
-			
-			var options = {
-				center: new kakao.maps.LatLng(gps_x, gps_y),
-				level: 4
-			};
-	
-			if(navigator.geolocation){
-				navigator.geolocation.getCurrentPosition(function(position) {
-			        
-			        var lat = position.coords.latitude, // 위도
-			            lon = position.coords.longitude; // 경도
-			        
-			        var locPosition = new kakao.maps.LatLng(lat, lon);
-			        map.setCenter(locPosition);   
-				});
-			}else{
-				console.error('geo error');
-			}
+				var container = document.getElementById('map');
 				
-			var map = new kakao.maps.Map(container, options);
-			
-			var geocoder = new kakao.maps.services.Geocoder();
-
-			var callback = function(result, status) {
-			    if (status === kakao.maps.services.Status.OK) {
-			        console.log(result);
-			    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new kakao.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-				}
-			};
+				var gps_x = 37.322843;
+				var gps_y = 127.127846;
+				
+				$("#gps_x").val(gps_x);
+				$("#gps_y").val(gps_y);
+				
+				var options = {
+					center: new kakao.maps.LatLng(gps_x, gps_y),
+					level: 4
+				};
+		
+				var map = new kakao.maps.Map(container, options);
+				
+				var geocoder = new kakao.maps.services.Geocoder();
+	
+				var callback = function(result, status) {
+				    if (status === kakao.maps.services.Status.OK) {
+				        console.log(result);
+				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+					}
+				};
 		</script>
 			<c:forEach items="${view}" var="view">
 			 	<div class="contents">
-					<div class="contents_info">
+					<div class="contents_info" onclick="javascript:foodDetail('${view.sto_no}')">
 					 	<ul>
 						 	<li>${view.sto_name}</li>
-						 	<li>평균 가격: 아직 미정</li>
-						 	<li>${view.sto_tel}</li>
-						 	<li>${view.sto_loc}</li>
+						 	<li>음식종류 #해시태그</li>
+		                    <li>사장 한마디</li>
+		                    <li>"       "</li> 
+		                    <li>#해시태그 #해시태그 #해시태그</li>
 						  	<li><script>geocoder.addressSearch('${view.sto_loc}', callback);</script></li>
 					 	</ul>
 					 </div>
@@ -137,6 +129,10 @@
 		<!-- Hidden Form -->
 		<form id="letterForm" action="/letter/list" method="post">
 	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		</form>
+		
+		<form id="detailForm" action="/foodlist/foodDetail" method="post">
+	    	<input type="hidden" id="sto_no" name="sto_no" />
 		</form>
 	</body>
 </html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="store">
+	
+	<insert id="reserve">
+		INSERT 
+		  INTO RESERVATION
+		  	   (
+				res_name
+		  		, res_time
+		  		, res_cur_time
+		  		, res_people
+		  	   ) 
+		VALUES (
+				#{res_name}
+				, #{res_all}
+				, NOW()
+				, #{res_people}
+			   )
+	</insert>
+	
+</mapper>

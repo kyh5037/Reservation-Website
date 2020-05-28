@@ -18,6 +18,12 @@
 
 				form.submit();
 			}
+			
+// 			function listLetter() {
+// 				var form = $("#listForm");
+				
+// 				form.submit();
+// 			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
@@ -59,6 +65,7 @@
 						<tr>
 							<td colspan="4">등록하신 글이 없습니다.</td>
 						</tr>
+<<<<<<< HEAD
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${list}" var="list">
@@ -78,6 +85,26 @@
 								<c:if test="${prev}">
 									<a href="/letter/list?let_no_acc=${let_no_acc}&num=${startPageNum - 1}">[이전]</a>
 								</c:if>
+=======
+					</c:forEach>
+					<tr>
+						<td colspan="4">
+							<c:if test="${prev}">
+								<a href="/letter/list?let_no_acc=${let_no_acc}&num=${startPageNum - 1}">[이전]</a>
+							</c:if>
+						
+							<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+								<c:choose>	
+									<c:when test="${select != num}">
+										<a href="/letter/list">${num}</a>
+<%-- 										<a onclick="javascript:listLetter()">${num}</a> --%>
+									</c:when>
+									<c:otherwise>
+										<span style="color:red">${num}</span>
+									</c:otherwise>	 
+								</c:choose>
+							</c:forEach>
+>>>>>>> parent of c830136... modify
 							
 								<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
 									<c:choose>	

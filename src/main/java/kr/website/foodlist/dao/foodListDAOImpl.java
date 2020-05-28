@@ -19,5 +19,9 @@ public class foodListDAOImpl implements foodListDAO {
 	public List<foodListVO> foodView(foodListVO vo) throws Exception {
 		return sql.selectList("foodlist.list", vo);
 	}
-
+	
+	@Override
+	public foodListVO foodDetail(int no) throws Exception {
+		return sql.selectOne("foodlist.detail", no);
+	}
 }

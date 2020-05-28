@@ -19,5 +19,10 @@ public class foodListServiceImpl implements foodListService {
 	public List<foodListVO> foodView(foodListVO vo) throws Exception {
 		return dao.foodView(vo);
 	}
+	
+	@Override
+	public foodListVO foodDetail(int no) throws Exception {
+		return dao.foodDetail(no);
+	}
 
 }

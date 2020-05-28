@@ -8,6 +8,13 @@
 %>
 
 <%	
+	String sto_no = "";
+
+	if (session.getAttribute("sto_no") != null)
+		sto_no = Integer.toString((int)session.getAttribute("sto_no"));
+%>
+
+<%	
 	int level = 0;
 
 	if (session.getAttribute("acc_level") != null)
@@ -32,6 +39,7 @@
 <!-- CSS -->
 <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="/resources/css/main.css" />
+<link rel="stylesheet" href="/resources/css/date.css" />
 
 <!-- Meta -->
 <meta charset="utf-8" />

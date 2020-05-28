@@ -12,4 +12,12 @@
 <!-- 		 WHERE sto_gps_x -->
 	</select>
 	
+	<select id="detail" resultType="foodListVO">
+		SELECT sto_no
+			   , sto_name
+			   , sto_tel
+			   , sto_loc
+		  FROM STORE
+		 WHERE sto_no = #{sto_no}
+	</select>
 </mapper>
