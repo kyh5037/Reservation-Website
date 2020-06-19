@@ -14,11 +14,23 @@
 	</head>
 	<body>
 		<div id="wrap">
-		
+			
+			<div class="resTitle" style="height: 30px;">
+				<span style="float: left;">예약 가능 수 : </span>
+				<form id="maxTable"><input name="tb_maxTable" class="input" type="text" value="${tb.tb_maxTable}" style="width:25px;" onkeypress="javascript:if( event.keyCode==13 ){changeMax();}">
+				<span style="float: right;">현재 예약 수 : ${tb.tb_curTable}</span>
+				</form>
+				
+			</div>
+			<script>
+				function changeMax(){
+				    var formData = $("#maxTable").serialize();
+					ajaxPostAction("/information/changeMax", formData);
+				}
+			</script>
 			<c:forEach items="${list}" var="list">	
 				<div class="resInfoBox">
 					<div class="resState">
-						<span class="resTitle">${list.sto_name}</span><br>	
 						<span style="float: left;">
 						<c:choose>
 							<c:when test="${list.res_check eq 0}">${list.res_name }님 예약신청중</c:when>

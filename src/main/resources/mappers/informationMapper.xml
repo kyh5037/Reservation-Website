@@ -29,6 +29,22 @@
         		, #{sto_thumbPhoto}
     		   )
     </insert>
+    <insert id="tbInsert">
+    	INSERT 
+    	  INTO TB
+    		   (
+				sto_no_tb
+				,tb_check
+				,tb_maxTable
+				,tb_curTable
+    		   )
+        VALUES (
+				#{menu_no_sto}
+				, 0
+				, 0
+				, 0
+    		   )
+    </insert>
     
     <update id="stoUpdate">
 		UPDATE STORE 
@@ -146,6 +162,12 @@
 		  FROM TB
 		 WHERE sto_no_tb = #{res_no_sto};
 	</select>
+	
+	<update id="maxUpdate">
+		UPDATE TB
+		   SET tb_maxTable = #{tb_maxTable}
+		 WHERE tb.sto_no_tb = #{res_no_sto};   
+	</update>
 	
 	<select id="myReview" resultType="reviewVO">
 		SELECT review_content

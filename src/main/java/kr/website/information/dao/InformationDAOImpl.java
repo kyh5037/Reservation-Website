@@ -85,6 +85,17 @@ public class InformationDAOImpl implements InformationDAO {
 	}
 	
 	@Override
+	public void tbInsert(int no) throws Exception{
+		sql.insert("information.tbInsert", no);
+	}
+	
+	@Override
+	public void maxUpdate(ReserveVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.update("information.maxUpdate", vo);
+	}
+
+	@Override
 	public List<ReviewVO> myReview(int no) throws Exception {
 		return sql.selectList("information.myReview", no);
 	}

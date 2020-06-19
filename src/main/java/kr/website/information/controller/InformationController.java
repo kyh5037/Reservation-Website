@@ -113,8 +113,8 @@ public class InformationController {
 		vo.setSto_thumbPhoto(File.separator + "imgUpload" + File.separator + "s" + File.separator + "s_" + fileName);
 		}
 		service.stoInfo(vo);
-		
 		int sto_no = service.stoNo(vo.getSto_no_acc());
+		service.tbInsert(sto_no);
 		try {	// 메뉴 없을경우 exception
 			String[] menu_name = vo.getMenu_name().split(",");
 			String[] menu_price = vo.getMenu_price().split(",");
@@ -175,13 +175,15 @@ public class InformationController {
 		int acc_no = (int) session.getAttribute("acc_no");
 		//Integer sto_no = (int) session.getAttribute("sto_no");
 		List<ReserveVO> vo = null;
-
+		ReserveVO vo1 = null;
 		Integer sto_no = service.stoNo(acc_no);
-		
+		session.setAttribute("sto_no", sto_no);
 		if(sto_no != 0) {
 //			session.setAttribute("sto_no", sto_no);
 			vo = service.resManage(session, sto_no);
+			vo1 = foodService.resCheck(sto_no);
 			model.addAttribute("list",vo);
+			model.addAttribute("tb",vo1);
 		} else {
 			model.addAttribute("check", "777");
 		}
@@ -211,6 +213,29 @@ public class InformationController {
 		return array.toJSONString();
 	}
 	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/changeMax", method=RequestMethod.POST)
+	@ResponseBody
+	public String changeMax(ReserveVO vo, HttpSession session) throws Exception{
+		JSONArray array = new JSONArray();
+		int sto_no = (int)session.getAttribute("sto_no");
+		int acc_no = (int)session.getAttribute("acc_no");
+		int acc_level = (int)session.getAttribute("acc_level");
+		vo.setRes_no_sto(sto_no);
+		vo.setRes_no_acc(acc_no);
+		try {
+			if(acc_level==1) {
+				service.maxUpdate(vo);
+				array.add("완료");
+			}else
+				array.add("실패");
+		}catch(Exception e) {}
+		
+		array.add("/information/resManage");
+		
+		return array.toJSONString();
+	}
+
 	@RequestMapping(value = "/myReview")
 	public String myReview(HttpSession session, Model model) throws Exception {
 		

@@ -76,7 +76,6 @@
 				    if ("OK" == kakao.maps.services.Status.OK) {
 					    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 					    	coords = new kakao.maps.LatLng(sto_gps_x, sto_gps_y);
-							console.log(imageSrc);
 				        // 결과값으로 받은 위치를 마커로 표시합니다
 				        var marker = new kakao.maps.Marker({
 				            position: coords,
@@ -112,7 +111,7 @@
 					 	<script>marke('${view.congest}','${view.sto_gps_x}','${view.sto_gps_y}')</script>
 					 </div>
 					 <div class="contents_img_box">
-				   			<img src="${view.sto_photo}" class="Img" />
+				   			<img src="${view.sto_photo}" class="Img" onError="this.src='/resources/images/error_img.jpg'">
 					 </div>
 				</div>	
 			</c:forEach>

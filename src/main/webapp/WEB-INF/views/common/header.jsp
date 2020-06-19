@@ -79,9 +79,9 @@
 				<a href="/member/login" class="button alt">로그인하세요</a>
 			<% } else { %>	
 			<%= session.getAttribute("acc_name") %>님
-			<% } %>
+			
 		</div>
-		<div>내정보 수정</div>
+		<div>내정보 수정<% } %></div>
 		<div>
 			<% if (level == 2) { %>
 				<a href="/information/myReview">내가쓴리뷰</a>

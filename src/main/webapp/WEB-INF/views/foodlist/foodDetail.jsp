@@ -10,7 +10,7 @@
 		<div id="wrap">
 			<div class="stoDetail">
 				<div class="sto_name">${detail.sto_name}</div>
-				<div class="sto_sub"><a href="tel:${detail.sto_tel}"><img src="/resources/images/tel.png" style="width: 0.9em;">${detail.sto_tel}</a></div>
+				<div class="sto_sub"><a href="tel:${detail.sto_tel}"><img src="/resources/images/tel.png" style="width: 0.9em;">&nbsp;${detail.sto_tel}</a></div>
 				<div id = "map"></div>
 				<script>
 		
@@ -44,6 +44,8 @@
 					<c:when test="${res eq 1 }"><button type="button" class="btn_global" id="btnReserve">예약이 불가능 합니다.</button></c:when>
 					<c:otherwise><button type="button" class="btn_global" id="btnReserve" onclick="javascript:foodReserve('${detail.sto_no}')">예약하기</button></c:otherwise>
 				</c:choose>
+				<%	String acc_no = String.valueOf(session.getAttribute("acc_no"));
+			if(!acc_no.equals("null")){%>
 				<form id="reviewForm" method="post">
 					<div class="menu_title">리 뷰 등 록</div>
 					<div class="review">
@@ -73,6 +75,9 @@
 						</div>
 					</div>
 				</form>
+				
+			<%}	
+		%>
 				<div id="reviewList">
 					<c:forEach items="${review}" var="review">
 						<div id="reviewContent">

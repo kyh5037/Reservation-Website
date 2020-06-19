@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>보통밥집 : 예약</title>
+		<%	String acc_no = String.valueOf(session.getAttribute("acc_no"));
+			if(acc_no.equals("null")){%>
+			<script>alert('로그인 후 이용가능합니다.');history.back();</script>
+			<%}	
+		%>
 		<script>
 	
 			$(document).ready(function(){

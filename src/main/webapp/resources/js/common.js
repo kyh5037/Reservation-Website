@@ -234,7 +234,7 @@ function resConfirm(res_no, res_check){
 	f.setAttribute("method","post"); 
 	f.setAttribute("id", "resConfirm")
 	f.setAttribute("action","/information/resCheck");
-
+	document.body.appendChild(f);
 	
 	var i = document.createElement("input");
 	i.setAttribute("type","hidden");

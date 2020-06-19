@@ -34,5 +34,9 @@ public interface InformationDAO {
 	
 	public void tbUpdate(ReserveVO vo) throws Exception;
 	
+	public void tbInsert(int no) throws Exception;
+	
+	public void maxUpdate(ReserveVO vo)throws Exception;
+	
 	public List<ReviewVO> myReview(int no) throws Exception;
 }

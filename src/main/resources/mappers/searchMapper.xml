@@ -8,9 +8,12 @@
 			   , sto_name
 			   , sto_tel
 			   , sto_loc
+			   , sto_photo
+			   , sto_comment
+			   , average_price
+			   , sto_thumbPhoto
 			   , sto_gps_x
 			   , sto_gps_y
-			   , sto_photo
 		  FROM STORE
 		 WHERE sto_loc 
 		  LIKE CONCAT('%',#{search},'%')

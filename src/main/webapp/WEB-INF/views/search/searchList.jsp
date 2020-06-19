@@ -77,10 +77,11 @@
 					 	</ul>
 					 </div>
 					 <div class="contents_img_box">
-				   			<img src="${list.sto_photo}">
+				   			<img src="${list.sto_photo}" class="Img" onError="this.src='/resources/images/error_img.jpg'">
 					 </div>
 				</div>	
 			</c:forEach>
+			
 			<script>
 				if(!document.getElementsByClassName("contents")[0]){
 					alert("검색결과가 없습니다.");

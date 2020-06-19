@@ -1030,6 +1030,23 @@
 	.starR.on {
 		background-position:0 0;
 	}
+	.starRev_small{
+		padding: 5px 0;
+	}
+	.starR_small {
+		background:	url('../images/star.png') no-repeat right 0;
+		background-size: auto 100%;
+		width: 10px;
+		height: 10px;
+		display: inline-block;
+		text-indent: -9999px;
+		cursor: pointer;
+	}
+
+	.starR.on_small {
+		background-position:0 0;
+	}
+	
 	.input_content{
 		    font-size: 16px;
 		    line-height: 17px;
