@@ -34,13 +34,11 @@
     	  INTO TB
     		   (
 				sto_no_tb
-				,tb_check
 				,tb_maxTable
 				,tb_curTable
     		   )
         VALUES (
 				#{menu_no_sto}
-				, 0
 				, 0
 				, 0
     		   )
